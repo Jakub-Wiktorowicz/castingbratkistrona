@@ -220,7 +220,7 @@
             text-decoration: underline;
         }
 
-        /* --- PIONOWA RAMKA WIDEO 9:16 (BEZ PRZERW) --- */
+        /* --- PIONOWA RAMKA WIDEO 9:16 (ZABLOKOWANA I AUTOMATYCZNA) --- */
         .video-wrapper {
             position: relative;
             width: 210px;
@@ -240,6 +240,7 @@
             width: calc(100% + 20px);
             height: calc(100% + 70px);
             border: 0;
+            pointer-events: none; /* Całkowicie blokuje klikanie i zatrzymywanie filmu */
         }
 
         /* --- STOPKA PRAWNA --- */
