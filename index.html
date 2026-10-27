@@ -295,20 +295,20 @@
             color: #e59400;
         }
 
-        /* --- OKIENKO MODAL (FIXED + AUTO ŚRODEK) --- */
+        /* --- OKIENKO MODAL (IDEALNIE WYŚRODKOWANE NA KAŻDYM URZĄDZENIU) --- */
         .modal-overlay {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(5px);
             z-index: 999;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             box-sizing: border-box;
         }
 
@@ -316,32 +316,32 @@
             background: #18120d;
             border: 2px solid #e59400;
             border-radius: 20px;
-            max-width: 600px;
+            max-width: 500px;
             width: 100%;
             max-height: 80vh;
             overflow-y: auto;
-            padding: 30px;
+            padding: 20px;
             text-align: left;
             position: relative;
             box-shadow: 0 20px 40px rgba(0,0,0,0.9);
-            margin: auto;
+            box-sizing: border-box;
         }
 
         .modal-content h3 {
             color: #e59400;
             margin-top: 0;
-            font-size: 20px;
+            font-size: 18px;
             text-transform: uppercase;
         }
 
         .modal-content h4 {
             color: #ffa600;
-            margin-top: 20px;
-            font-size: 15px;
+            margin-top: 15px;
+            font-size: 14px;
         }
 
         .modal-content p, .modal-content li {
-            font-size: 13px;
+            font-size: 12px;
             color: #ccc;
             line-height: 1.5;
         }
@@ -353,12 +353,12 @@
 
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 20px;
+            top: 10px;
+            right: 15px;
             background: none;
             border: none;
             color: #fff;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             cursor: pointer;
         }
@@ -444,7 +444,7 @@
 
     <!-- OKIENKO MODAL (TREŚĆ PRAWNA) -->
     <div id="legalModal" class="modal-overlay">
-        <div class="modal-content" id="modalBox">
+        <div class="modal-content">
             <button class="close-modal" onclick="closeModal()">&times;</button>
             
             <div id="content-regulamin" style="display:none;">
@@ -490,7 +490,7 @@
 
         document.addEventListener('touchmove', (e) => {
             if(e.touches.length > 0) {
-                updateParallax(e.touches.length > 0 ? e.touches[0].clientX : 0, e.touches[0].clientY);
+                updateParallax(e.touches[0].clientX, e.touches[0].clientY);
             }
         }, {passive: false});
 
@@ -498,7 +498,7 @@
             logo.style.transform = `rotateX(0deg) rotateY(0deg)`;
         });
 
-        // Obsługa wyskakującego okienka prawnego (Modal) z automatycznym wyśrodkowaniem na ekranie
+        // Obsługa wyskakującego okienka prawnego (Modal) z blokadą tła na telefonie
         function openModal(type) {
             const modal = document.getElementById('legalModal');
             const regContent = document.getElementById('content-regulamin');
@@ -514,19 +514,19 @@
             }
 
             modal.style.display = 'flex';
-            
-            // Automatycznie ustawia okienko idealnie na środku aktualnego widoku użytkownika
-            document.getElementById('modalBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            document.body.style.overflow = 'hidden'; // Blokuje przewijanie strony pod spodem na telefonie
         }
 
         function closeModal() {
             document.getElementById('legalModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Przywraca przewijanie strony
         }
 
         window.onclick = function(event) {
             const modal = document.getElementById('legalModal');
             if (event.target === modal) {
                 modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         }
     </script>
