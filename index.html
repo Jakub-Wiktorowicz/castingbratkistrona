@@ -220,7 +220,7 @@
             text-decoration: underline;
         }
 
-        /* --- PIONOWA RAMKA WIDEO 9:16 Z MASKĄ BLOKUJĄCĄ IKONKI --- */
+        /* --- PIONOWA RAMKA WIDEO 9:16 (NATYWNY TAG VIDEO) --- */
         .video-wrapper {
             position: relative;
             width: 210px;
@@ -233,25 +233,14 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.7);
         }
 
-        .video-wrapper iframe {
-            position: absolute;
-            top: -100px;
-            left: -50px;
-            width: calc(100% + 100px);
-            height: calc(100% + 200px);
-            border: 0;
-        }
-
-        /* Ta warstwa zakrywa wszelkie napisy i paski na górze i dole */
-        .video-wrapper::after {
-            content: "";
+        .video-wrapper video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            box-shadow: inset 0 0 0 3px rgba(0,0,0,0);
+            object-fit: cover;
+            border: 0;
         }
 
         /* --- STOPKA PRAWNA --- */
@@ -425,16 +414,11 @@
                     <p>Tworzymy ten casting, ponieważ chcemy powiększyć naszą paczkę o kogoś, kto ma totalny dystans do siebie, nie obawia się kamery i potrafi rozkręcić każdy materiał!</p>
                 </div>
 
-                <!-- PRAWA STRONA: PIONOWE OKIENKO 9:16 -->
+                <!-- PRAWA STRONA: PIONOWE OKIENKO 9:16 (BEZPOŚREDNI STRSTREAMABLE MP4) -->
                 <div class="videos-box">
                     <h3>BRATKI W AKCJI</h3>
                     <div class="video-wrapper">
-                        <iframe src="https://streamable.com/e/95a8kd?autoplay=1&muted=1&controls=0" 
-                                width="100%" 
-                                height="100%" 
-                                frameborder="0" 
-                                allowfullscreen>
-                        </iframe>
+                        <video src="https://cdn-cf-east.streamable.com/video/mp4/95a8kd.mp4?Expires=1774885680&Signature=bW-4H-B0x2lBvW9M... (lub skopiowany link mp4)" autoplay loop muted playsinline></video>
                     </div>
                 </div>
             </div>
