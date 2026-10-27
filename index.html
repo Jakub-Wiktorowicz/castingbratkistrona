@@ -295,14 +295,14 @@
             color: #e59400;
         }
 
-        /* --- OKIENKO MODAL (DOPASOWANE DO EKRANU UŻYTKOWNIKA) --- */
+        /* --- OKIENKO MODAL (FIXED + AUTO ŚRODEK) --- */
         .modal-overlay {
             display: none;
-            position: absolute; /* Zmienione z fixed na absolute, żeby dopasować się do pozycji przewinięcia */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(5px);
             z-index: 999;
@@ -444,7 +444,7 @@
 
     <!-- OKIENKO MODAL (TREŚĆ PRAWNA) -->
     <div id="legalModal" class="modal-overlay">
-        <div class="modal-content">
+        <div class="modal-content" id="modalBox">
             <button class="close-modal" onclick="closeModal()">&times;</button>
             
             <div id="content-regulamin" style="display:none;">
@@ -490,7 +490,7 @@
 
         document.addEventListener('touchmove', (e) => {
             if(e.touches.length > 0) {
-                updateParallax(e.touches[0].clientX, e.touches[0].clientY);
+                updateParallax(e.touches.length > 0 ? e.touches[0].clientX : 0, e.touches[0].clientY);
             }
         }, {passive: false});
 
@@ -498,7 +498,7 @@
             logo.style.transform = `rotateX(0deg) rotateY(0deg)`;
         });
 
-        // Obsługa wyskakującego okienka prawnego (Modal) z ustawieniem na aktualnej wysokości ekranu
+        // Obsługa wyskakującego okienka prawnego (Modal) z automatycznym wyśrodkowaniem na ekranie
         function openModal(type) {
             const modal = document.getElementById('legalModal');
             const regContent = document.getElementById('content-regulamin');
@@ -513,22 +513,20 @@
                 polContent.style.display = 'block';
             }
 
-            // Ustawia okienko dokładnie w miejscu, gdzie znajduje się użytkownik (względem przewinięcia)
-            modal.style.top = window.scrollY + 'px';
             modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Blokuje przewijanie strony w tle, gdy okienko jest otwarte
+            
+            // Automatycznie ustawia okienko idealnie na środku aktualnego widoku użytkownika
+            document.getElementById('modalBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function closeModal() {
             document.getElementById('legalModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Przywraca przewijanie strony
         }
 
         window.onclick = function(event) {
             const modal = document.getElementById('legalModal');
             if (event.target === modal) {
                 modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
             }
         }
     </script>
