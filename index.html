@@ -220,7 +220,7 @@
             text-decoration: underline;
         }
 
-        /* --- PIONOWA RAMKA WIDEO 9:16 (Z UKRYTYMI NAPISAMI) --- */
+        /* --- PIONOWA RAMKA WIDEO 9:16 (STREAMABLE IFRAME) --- */
         .video-wrapper {
             position: relative;
             width: 210px;
@@ -235,10 +235,10 @@
 
         .video-wrapper iframe {
             position: absolute;
-            top: -50px;
+            top: 0;
             left: 0;
             width: 100%;
-            height: calc(100% + 100px);
+            height: 100%;
             border: 0;
         }
 
@@ -414,13 +414,14 @@
                     <p>Tworzymy ten casting, ponieważ chcemy powiększyć naszą paczkę o kogoś, kto ma totalny dystans do siebie, nie obawia się kamery i potrafi rozkręcić każdy materiał!</p>
                 </div>
 
-                <!-- PRAWA STRONA: PIONOWE OKIENKO 9:16 -->
+                <!-- PRAWA STRONA: PIONOWE OKIENKO 9:16 (STREAMABLE) -->
                 <div class="videos-box">
                     <h3>BRATKI W AKCJI</h3>
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/eOdeFzVA7gs?autoplay=1&mute=1&controls=0&loop=1&playlist=eOdeFzVA7gs" 
-                                title="Bratki w akcji" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        <iframe src="https://streamable.com/e/95a8kd?autoplay=1&muted=1" 
+                                width="100%" 
+                                height="100%" 
+                                frameborder="0" 
                                 allowfullscreen>
                         </iframe>
                     </div>
