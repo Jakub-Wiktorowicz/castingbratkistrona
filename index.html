@@ -295,14 +295,14 @@
             color: #e59400;
         }
 
-        /* --- OKIENKO MODAL (IDEALNIE WYŚRODKOWANE) --- */
+        /* --- OKIENKO MODAL (DOPASOWANE DO EKRANU UŻYTKOWNIKA) --- */
         .modal-overlay {
             display: none;
-            position: fixed;
+            position: absolute; /* Zmienione z fixed na absolute, żeby dopasować się do pozycji przewinięcia */
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(5px);
             z-index: 999;
@@ -498,7 +498,7 @@
             logo.style.transform = `rotateX(0deg) rotateY(0deg)`;
         });
 
-        // Obsługa wyskakującego okienka prawnego (Modal)
+        // Obsługa wyskakującego okienka prawnego (Modal) z ustawieniem na aktualnej wysokości ekranu
         function openModal(type) {
             const modal = document.getElementById('legalModal');
             const regContent = document.getElementById('content-regulamin');
@@ -513,17 +513,22 @@
                 polContent.style.display = 'block';
             }
 
+            // Ustawia okienko dokładnie w miejscu, gdzie znajduje się użytkownik (względem przewinięcia)
+            modal.style.top = window.scrollY + 'px';
             modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Blokuje przewijanie strony w tle, gdy okienko jest otwarte
         }
 
         function closeModal() {
             document.getElementById('legalModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Przywraca przewijanie strony
         }
 
         window.onclick = function(event) {
             const modal = document.getElementById('legalModal');
             if (event.target === modal) {
                 modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         }
     </script>
