@@ -220,7 +220,7 @@
             text-decoration: underline;
         }
 
-        /* --- PIONOWA RAMKA WIDEO 9:16 (POPRAWIONE DOPASOWANIE) --- */
+        /* --- PIONOWA RAMKA WIDEO 9:16 Z MASKĄ BLOKUJĄCĄ IKONKI --- */
         .video-wrapper {
             position: relative;
             width: 210px;
@@ -235,11 +235,23 @@
 
         .video-wrapper iframe {
             position: absolute;
-            top: -90px;
+            top: -100px;
+            left: -50px;
+            width: calc(100% + 100px);
+            height: calc(100% + 200px);
+            border: 0;
+        }
+
+        /* Ta warstwa zakrywa wszelkie napisy i paski na górze i dole */
+        .video-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0;
             left: 0;
             width: 100%;
-            height: calc(100% + 120px);
-            border: 0;
+            height: 100%;
+            pointer-events: none;
+            box-shadow: inset 0 0 0 3px rgba(0,0,0,0);
         }
 
         /* --- STOPKA PRAWNA --- */
