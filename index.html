@@ -220,7 +220,7 @@
             text-decoration: underline;
         }
 
-        /* --- PIONOWA RAMKA WIDEO 9:16 (W PEŁNI DOPASOWANA) --- */
+        /* --- PIONOWA RAMKA WIDEO 9:16 --- */
         .video-wrapper {
             position: relative;
             width: 210px;
@@ -239,7 +239,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover; /* Wypełni ładnie całą ramkę */
             background: #000;
             border: 0;
         }
@@ -419,8 +419,8 @@
                 <div class="videos-box">
                     <h3>BRATKI W AKCJI</h3>
                     <div class="video-wrapper">
-                        <!-- Pamiętaj, aby w src podać bezpośredni link do pliku mp4 ze Streamable lub wrzuconego pliku -->
-                        <video src="https://cdn-cf-east.streamable.com/video/mp4/95a8kd.mp4" autoplay loop muted playsinline></video>
+                        <!-- Tutaj wskazujemy plik film.mp4 wgrany bezpośrednio do repozytorium -->
+                        <video src="film.mp4" autoplay loop muted playsinline></video>
                     </div>
                 </div>
             </div>
