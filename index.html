@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Casting - Bratki</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800;900&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #050505 0%, #2b1800 50%, #c47c17 100%);
+            perspective: 1000px;
+        }
+
+        section {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 1;
+            background: rgba(20, 15, 10, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 2px solid rgba(196, 124, 23, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            transform-style: preserve-3d;
+        }
+
+        .logo-container {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .mascot-logo {
+            width: 220px;
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            border: 3px solid rgba(229, 148, 0, 0.5);
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            font-size: 34px;
+            font-weight: 900;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #ffffff, #e59400);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(229, 148, 0, 0.2);
+        }
+
+        p {
+            font-size: 15px;
+            color: #dcdcdc;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 35px;
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            background: #e59400;
+            border-radius: 50px;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(229, 148, 0, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 25px;
+        }
+
+        .cta-button:hover, .cta-button:active {
+            transform: scale(1.05);
+            background: #ffb122;
+            box-shadow: 0 15px 40px rgba(229, 148, 0, 0.7);
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(229, 148, 0, 0.6), transparent);
+        }
+
+        .scroll-down {
+            background: rgba(229, 148, 0, 0.15);
+            border: 2px solid rgba(229, 148, 0, 0.6);
+            color: #ffb122;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: 800;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .scroll-down:hover {
+            background: #e59400;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* --- DOLNA SEKCJA --- */
+        .bottom-section {
+            background: rgba(10, 7, 5, 0.85);
+            border-top: 3px solid #e59400;
+        }
+
+        .bottom-container {
+            max-width: 950px;
+            width: 100%;
+            padding: 40px 20px;
+            text-align: left;
+        }
+
+        .bottom-container h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 900;
+            color: #e59400;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .history-box, .videos-box {
+            background: rgba(25, 18, 12, 0.8);
+            border: 1px solid rgba(229, 148, 0, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            box-sizing: border-box;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .history-box h3, .videos-box h3 {
+            font-size: 18px;
+            color: #ffa600;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .history-box p {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .history-box a {
+            color: #ffa600;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .history-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- PIONOWA RAMKA WIDEO 9:16 --- */
+        .video-wrapper {
+            position: relative;
+            width: 210px;
+            height: 373px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #000;
+            border: 3px solid rgba(229, 148, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- STOPKA PRAWNA --- */
+        .legal-footer {
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(229, 148, 0, 0.2);
+            padding-top: 20px;
+        }
+
+        .legal-footer p {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .legal-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legal-btn {
+            background: none;
+            border: none;
+            color: #ffa600;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .legal-btn:hover {
+            color: #ffb122;
+        }
+
+        .back-to-top {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .back-to-top:hover {
+            color: #e59400;
+        }
+
+        /* --- OKIENKO MODAL (POLITYKA I REGULAMIN) --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background: #18120d;
+            border: 2px solid #e59400;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+        }
+
+        .modal-content h3 {
+            color: #e59400;
+            margin-top: 0;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .modal-content h4 {
+            color: #ffa600;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        .modal-content p, .modal-content li {
+            font-size: 13px;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .modal-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #e59400;
+        }
+
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 28px; }
+            .mascot-logo { width: 180px; }
+            .cta-button { font-size: 18px; padding: 15px 20px; }
+            .video-wrapper {
+                width: 180px;
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- GÓRNA SEKCJA: CASTING -->
+    <section id="top-section">
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo3d.png" alt="Bratki Logo" class="mascot-logo" id="dynamic-logo">
+            </div>
+            
+            <h1>SZUKAMY<br>NAJWIĘKSZEGO<br>ŚMIESZKA!</h1>
+            
+            <p>Masz w sobie tyle energii, że potrafisz rozbawić każdego do łez? Wypełnij zgłoszenie i weź udział w castingu. Pokaż nam, na co Cię stać i rywalizuj o główną nagrodę!</p>
+            
+            <!-- PAMIĘTAJ O LINKU DO FORMULARZA -->
+            <a href="LINK_DO_FORMULARZA_TUTAJ" target="_blank" class="cta-button">ZGŁASZAM SIĘ!</a>
+            
+            <div class="section-divider">
+                <a href="#about-section" class="scroll-down">Poznaj naszą historię ↓</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOLNA SEKCJA: HISTORIA ORAZ PIONOWE WIDEO -->
+    <section id="about-section" class="bottom-section">
+        <div class="bottom-container">
+            <h2>O nas i nasze akcje</h2>
+            
+            <div class="grid-layout">
+                <!-- LEWA STRONA: HISTORIA -->
+                <div class="history-box">
+                    <h3>Kim są Bratki?</h3>
+                    <p>Siema! Jesteśmy dwójką ziomków, którzy tworzą zgraną ekipę i dostarczają masę śmiechu na naszych kanałach na <strong>TikToku</strong> (<a href="https://www.tiktok.com/@bratkii_" target="_blank">@bratkii_</a>), <strong>YouTube</strong>, <strong>Instagramie</strong> oraz <strong>Facebooku</strong>.</p>
+                    <p>Tworzymy ten casting, ponieważ chcemy powiększyć naszą paczkę o kogoś, kto ma totalny dystans do siebie, nie obawia się kamery i potrafi rozkręcić każdy materiał!</p>
+                </div>
+
+                <!-- PRAWA STRONA: PIONOWE OKIENKO 9:16 -->
+                <div class="videos-box">
+                    <h3>BRATKI W AKCJI</h3>
+                    <div class="video-wrapper">
+                        <video autoplay loop muted playsinline>
+                            <source src="stronafilm.mp4" type="video/mp4">
+                            Twoja przeglądarka nie obsługuje wideo.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STOPKA PRAWNA -->
+            <div class="legal-footer">
+                <p>&copy; 2026 Bratki. Wszelkie prawa zastrzeżone.</p>
+                <div class="legal-links">
+                    <button class="legal-btn" onclick="openModal('regulamin')">Regulamin Castingu</button>
+                    <button class="legal-btn" onclick="openModal('polityka')">Polityka Prywatności i RODO</button>
+                </div>
+            </div>
+
+            <a href="#top-section" class="back-to-top">↑ Wróć na górę do zgłoszeń</a>
+        </div>
+    </section>
+
+    <!-- OKIENKO MODAL (TREŚĆ PRAWNA) -->
+    <div id="legalModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            
+            <div id="content-regulamin" style="display:none;">
+                <h3>Regulamin Castingu Bratki</h3>
+                <h4>1. Postanowienia ogólne</h4>
+                <p>Organizatorem castingu jest twórca kanału "Bratki" (@bratkii_). Udział w castingu jest całkowicie dobrowolny i darmowy.</p>
+                <h4>2. Warunki uczestnictwa</h4>
+                <p>W castingu mogą brać udział osoby pełnoletnie lub osoby niepełnoletnie za zgodą rodziców/opiekunów prawnych. Warunkiem zgłoszenia jest wypełnienie formularza oraz przesłanie autorskich materiałów.</p>
+                <h4>3. Zgoda na wizerunek</h4>
+                <p>Uczestnik zgłaszający się do castingu oświadcza, że wyraża zgodę na nieodpłatne utrwalanie, wykorzystywanie i rozpowszechnianie swojego wizerunku w materiałach wideo publikowanych na profilu TikTok (@bratkii_) oraz innych platformach społecznościowych Organizatora.</p>
+            </div>
+
+            <div id="content-polityka" style="display:none;">
+                <h3>Polityka Prywatności i RODO</h3>
+                <h4>1. Administrator danych</h4>
+                <p>Administratorem danych osobowych zbieranych w ramach zgłoszeń do castingu są twórcy marki Bratki (@bratkii_).</p>
+                <h4>2. Cel zbierania danych</h4>
+                <p>Dane osobowe (imię, nick, linki do materiałów wideo, adres e-mail) są zbierane wyłącznie w celu przeprowadzenia procesu rekrutacji i wyłonienia uczestników do nagrań wideo.</p>
+                <h4>3. Prawa użytkownika</h4>
+                <p>Podanie danych jest dobrowolne, ale niezbędne do wzięcia udziału w castingu. Każda osoba ma prawo dostępu do swoich danych, ich sprostowania lub żądania ich usunięcia.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efekt 3D dla loga
+        const logo = document.getElementById('dynamic-logo');
+
+        function updateParallax(inputX, inputY) {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const deltaX = inputX - centerX;
+            const deltaY = inputY - centerY;
+            const maxRotation = 15;
+            const rotateY = (deltaX / centerX) * maxRotation;
+            const rotateX = -(deltaY / centerY) * maxRotation;
+            logo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            updateParallax(e.clientX, e.clientY);
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if(e.touches.length > 0) {
+                updateParallax(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, {passive: false});
+
+        document.addEventListener('mouseleave', () => {
+            logo.style.transform = `rotateX(0deg) rotateY(0deg)`;
+        });
+
+        // Obsługa wyskakującego okienka prawnego (Modal)
+        function openModal(type) {
+            const modal = document.getElementById('legalModal');
+            const regContent = document.getElementById('content-regulamin');
+            const polContent = document.getElementById('content-polityka');
+            
+            regContent.style.display = 'none';
+            polContent.style.display = 'none';
+
+            if (type === 'regulamin') {
+                regContent.style.display = 'block';
+            } else if (type === 'polityka') {
+                polContent.style.display = 'block';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('legalModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('legalModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
