@@ -220,7 +220,7 @@
             text-decoration: underline;
         }
 
-        /* --- PIONOWA RAMKA WIDEO 9:16 (NATYWNY TAG VIDEO) --- */
+        /* --- PIONOWA RAMKA WIDEO 9:16 (W PEŁNI DOPASOWANA) --- */
         .video-wrapper {
             position: relative;
             width: 210px;
@@ -239,7 +239,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #000;
             border: 0;
         }
 
@@ -414,11 +415,12 @@
                     <p>Tworzymy ten casting, ponieważ chcemy powiększyć naszą paczkę o kogoś, kto ma totalny dystans do siebie, nie obawia się kamery i potrafi rozkręcić każdy materiał!</p>
                 </div>
 
-                <!-- PRAWA STRONA: PIONOWE OKIENKO 9:16 (BEZPOŚREDNI STRSTREAMABLE MP4) -->
+                <!-- PRAWA STRONA: PIONOWE OKIENKO 9:16 -->
                 <div class="videos-box">
                     <h3>BRATKI W AKCJI</h3>
                     <div class="video-wrapper">
-                        <video src="https://cdn-cf-east.streamable.com/video/mp4/95a8kd.mp4?Expires=1774885680&Signature=bW-4H-B0x2lBvW9M... (lub skopiowany link mp4)" autoplay loop muted playsinline></video>
+                        <!-- Pamiętaj, aby w src podać bezpośredni link do pliku mp4 ze Streamable lub wrzuconego pliku -->
+                        <video src="https://cdn-cf-east.streamable.com/video/mp4/95a8kd.mp4" autoplay loop muted playsinline></video>
                     </div>
                 </div>
             </div>
